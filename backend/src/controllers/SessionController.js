@@ -1,14 +1,14 @@
 //index, show, store, update, destroy
-const UserModel = require('../models/User')
+const User = require('../models/User')
 
 module.exports = {
   async store(req, res) {
     const { email } = req.body;
 
-    let user = await UserModel.findOne({ email });
+    let user = await User.findOne({ email });
 
     if (!user) {
-      user = await UserModel.create({ email });
+      user = await User.create({ email });
     }
 
     return res.json(user);
